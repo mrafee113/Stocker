@@ -1,0 +1,12 @@
+Django==3.2.4
+helium==3.0.5
+selenium==3.141.0
+numpy==1.19.4
+pandas==1.1.4
+pandas-ta==0.2.45b0
+requests==2.25.0
+psycopg2==2.8.6
+celery==5.1.1
+django-celery-beat==2.2.0
+beautifulsoup4==4.9.3
+django-environ==0.4.5
