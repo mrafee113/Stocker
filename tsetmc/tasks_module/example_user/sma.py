@@ -6,7 +6,7 @@ from tsetmc.tasks_module.abstract_task import Analysis, metadata_wrapper
 from tsetmc.client import Ticker
 
 
-class MinDays(Analysis):
+class SMA(Analysis):
     username = 'bardiam'
 
     @classmethod
@@ -33,6 +33,5 @@ class MinDays(Analysis):
 
 
 @shared_task
-@metadata_wrapper(subclass=MinDays)
-def min_30_days(stocks: list[str], task: str):
-    return MinDays.run(stocks, task)
+def sma(stocks: list[str], task: str):
+    return SMA.run(stocks, task)

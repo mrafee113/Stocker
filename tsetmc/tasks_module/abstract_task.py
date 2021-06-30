@@ -19,8 +19,10 @@ class Analysis:
             results = cls.analyze(ticker)
             condition = cls.conditioning(results)
             conditions[stock] = condition
-            if cls.conditioning(results):
-                cls.notification(stock, task)
+
+        valid_stocks = [stock for stock, condition in conditions.items() if condition]
+        if valid_stocks:
+            cls.notification(", ".join(valid_stocks), task)
 
         return conditions
 
@@ -33,7 +35,7 @@ class Analysis:
         raise NotImplemented
 
     @classmethod
-    def notification(cls, stock: str, task):
+    def notification(cls, stocks: str, task):
         if cls.email is None:
             cls.email = cls.get_email()
 
@@ -49,7 +51,7 @@ class Analysis:
         Cheers!""".format(
             name=task.name,
             task=task.task,
-            stock=stock,
+            stock=stocks,
             description="\n".join(map(lambda x: f'\t{x}', task.description.split('\n'))),
             datetime=now().strftime('%Y-%M-%d %H:%M')
         )

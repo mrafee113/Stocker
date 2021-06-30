@@ -74,18 +74,21 @@ class TaskController:
         symbols = set()
         for task in tasks:
             for stock in task.stock_objects:
-                symbols |= stock.symbol
+                symbols |= {stock.symbol}
 
         stock_data_download(list(symbols))
 
     @classmethod
-    def run_tasks(cls):
-        today_tasks: list[PeriodicTask] = cls.get_date_tasks(today())
+    def run_tasks(cls, tasks: list[PeriodicTask] = None):
+        if tasks is None:
+            tasks: list[PeriodicTask] = cls.get_date_tasks(today())  # filter today
+        cls.download_tasks_data(tasks)
+
         task_functions: list[celery_task] = cls.get_task_functions(all_modules)
         tasks: list[tuple[celery_task, PeriodicTask]] = \
             [(task, ptask)
              for task in task_functions
-             for ptask in today_tasks
+             for ptask in tasks
              if ptask.equals_task(task)]
 
         for task_function, periodic_task in tasks:

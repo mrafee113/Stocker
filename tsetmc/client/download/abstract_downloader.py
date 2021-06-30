@@ -23,7 +23,7 @@ class AbstractDownloader:
     def _download(self):
         result_list = dict()  # for debugging only
         future_to_symbol = dict()
-        with futures.ThreadPoolExecutor(max_workers=20) as executor:
+        with futures.ThreadPoolExecutor(max_workers=12) as executor:
             for symbol in self.symbols:
                 try:
                     attr = self.get_attr(symbol)

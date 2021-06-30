@@ -111,6 +111,10 @@ class PeriodicTaskAdmin(celery_beat_admin.PeriodicTaskAdmin):
             return 'last_run_at',
         return 'last_run_at', 'task'
 
+    def run_tasks(self, request, queryset):
+        from tsetmc.tasks import TaskController
+        TaskController.run_tasks(list(queryset))
+
 
 class UserTaskForm(forms.ModelForm):
     task = celery_beat_admin.TaskChoiceField(

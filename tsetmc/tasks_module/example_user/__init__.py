@@ -1,1 +1,1 @@
-from .day_min import min_30_days
+from .sma import sma
