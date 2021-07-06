@@ -29,7 +29,7 @@ psql host: `localhost`
 user: **.env.DB_USER**  
 password: **.env.DB_PASSWD**
 
-####setup
+#### setup
 You would need **python 3.9**, **pip**, **virtualenv**, **postgres 12**
 for running the project. After you have installed the mentioned tools, clone 
 the project and navigate to its root, then run the following. **Might ask for root permissions**.
@@ -48,7 +48,7 @@ This will create all defined django tables and run pre-defined migrations.
 #### Redis
 port: **.env.REDIS_PORT**
 
-####setup
+#### setup
 To install redis instance do the following. **Replace PORT with chosen port**.
 ```sh
 wget http://download.redis.io/redis-stable.tar.gz
@@ -75,7 +75,7 @@ sudo /etc/init.d/redis_{PORT} start
 ```
 Now your redis instance should be up and running. From now on init.d will start it automatically.
 
-####Celery
+#### Celery
 celery_broker_url: redis://127.0.0.1/{PORT}
 
 Run the celery instance with this.
@@ -84,7 +84,7 @@ Run the celery instance with this.
 celery -A Stocker worker -l INFO
 ```
 
-####Django
+#### Django
 Install requirements before doing anything else with this.
 ```sh
 # navigate to project root
@@ -104,7 +104,7 @@ A module used for downloading, scraping and manipulating actual data of stocks f
 * tsetmc.client.download
 * tsetmc.client.Ticker
 
-###TSETMC Client Utils
+### TSETMC Client Utils
 ##### tsctmc.client.utils.StockController
 ```python
 from typing import *
@@ -134,7 +134,7 @@ ctrl.scrape_metadata(refresh_indexes=False)
 # At last it appends the new retrieved data to the metadata file.
 ```
 
-#####tsetmc.client.utils.populate_db
+##### tsetmc.client.utils.populate_db
 This is a method that searches and populates the database based on the available Stocks in files scraped from `tsetmc`
 ```python
 from tsetmc.client.utils import populate_db
@@ -145,7 +145,7 @@ Stock = app.get_model('tsetmc.Stock')
 populate_db(klass=Stock)
 ```
 
-#####tsetmc.client.utils.requests_retry_session
+##### tsetmc.client.utils.requests_retry_session
 This is a method which makes use of `requests.Session`, `requests.adaptors.HTTPAdaptor` and  
 `urllib3.Retry` to initiate a valid session with the network.  
 **Copied from https://github.com/Glyphack/pytse-client**
@@ -360,7 +360,7 @@ Index(['shareholder', 'shares', 'percentage', 'change'], dtype='object')
   - user: fk to `django.contrib.auth.models.User`
 
 #### TSETMC TASKS
-####tsetmc.tasks.TaskController
+#### tsetmc.tasks.TaskController
 This is a Controller class that identifies, filters (per user), runs and cleans the tasks created in tasks_module.
 * get_module_task_function
 * get_task_functions
@@ -369,7 +369,7 @@ This is a Controller class that identifies, filters (per user), runs and cleans 
 * run_tasks
 * cleanup
 
-####tsetmc.all_tasks
+#### tsetmc.all_tasks
 This is a module which stores the user hardcoded tasks. Each user must have their own module in this module.  
 After the user tasks have been coded by the admin, he must use `UserTask`
 from the admin panel to assign the created tasks to the user.
