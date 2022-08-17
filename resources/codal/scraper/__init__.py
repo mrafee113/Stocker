@@ -1,0 +1,2 @@
+from document_scraper import MyCodalDocumentScraper
+from company_scraper import MyCodalCompanyScraper
