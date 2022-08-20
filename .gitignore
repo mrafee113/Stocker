@@ -1,0 +1,10 @@
+data/
+Stocker/.env
+.idea/
+chromedriver
+geckodriver.log
+dump.rdb
+.venv
+
+scrapy_scrapers/geckodriver.log
+scrapy_scrapers/dbs/
