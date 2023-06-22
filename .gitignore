@@ -8,3 +8,4 @@ dump.rdb
 
 scrapy_scrapers/geckodriver.log
 scrapy_scrapers/dbs/
+backups/
