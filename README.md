@@ -1,3 +1,5 @@
+* The only reason I'm still keeping this repo is that I've used some hefty tricks (by my low standards) in the repo that I do intend re-read.
+
 ## Stocker
 ### Description
 An infrastructure for financier/developers to code upon for ***advanced stock market analysis***.  
